@@ -14,7 +14,19 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [buttomPopup, setButtomPopup] = useState(false);
   const [comPopup, setComPopup] = useState(false);
+  const [comentario, setComentario] = useState([]);
+  useEffect(()=>{
+    fetch('http://localhost:5000/comentarios',{
+      'methods':'POST',
+      headers : {
+        'Content-Type':'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => setComentario(response))
+    .catch(error => console.log(error))
 
+},[])
   useEffect(() => {
     getMovies(FEATURED_API);
   }, []);

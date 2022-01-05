@@ -18,7 +18,7 @@ function CommentPopup({selectedMovie, comPopup, setComPopup}) {
         return (<div className="comPopup"> 
                     <div className="comPopup-inner">
                         <p onClick={handleButtonOnClick}>TITULO: {selectedMovie.title}</p>
-                        <CommentEdit setComPopup={setComPopup} />
+                        <CommentEdit setComPopup={setComPopup} title={selectedMovie.title} />
                         
                     </div> 
                 </div>);

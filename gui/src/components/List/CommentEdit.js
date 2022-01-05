@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
+import {postComments} from '../../APIService';
+const CommentEdit = ({setComPopup, title}) => {
+    const [text, setText] = useState(" ");
+    const [usuario, setUsuario] = useState("livio");
+    const [email, setEmail] = useState("liv@liv.com");
 
-const CommentEdit = ({setComPopup}) => {
-    const [text, setText] = useState("");
-    const createComment = ({ content, postId}) => {
-        //Realizar con mi clase comentario de la api de flask
-    }
     const handleExpand = (e) => {
         e.target.style.height = "inherit";
         e.target.style.height = `${e.target.scrollHeight}px`;
@@ -17,8 +17,9 @@ const CommentEdit = ({setComPopup}) => {
         setText(e.target.value);
         handleExpand(e);
     };
-    const handleOnClick = (e) => {
+    const handleOnClick = () => {
         //Llamada API
+        postComments(title, usuario, email, text)
         setComPopup(false)
       };
     const onSubmitHandler = (event) => {
