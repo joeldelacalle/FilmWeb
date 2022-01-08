@@ -1,6 +1,6 @@
 import React ,{useState } from 'react';
 import "./CommentPopup.css";
-import CommentList from '../List/CommentList';
+import Comment from '../List/Comment';
 import CommentEdit from '../List/CommentEdit';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
@@ -18,7 +18,7 @@ function CommentPopup({selectedMovie, comPopup, setComPopup}) {
         return (<div className="comPopup"> 
                     <div className="comPopup-inner">
                         <p onClick={handleButtonOnClick}>TITULO: {selectedMovie.title}</p>
-                        <CommentEdit setComPopup={setComPopup} title={selectedMovie.title} />
+                        <CommentEdit setComPopup={setComPopup} selectedMovie={selectedMovie}  />
                         
                     </div> 
                 </div>);

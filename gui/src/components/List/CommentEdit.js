@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Button from 'react-bootstrap/Button';
-import {postComments} from '../../APIService';
-const CommentEdit = ({setComPopup, title}) => {
+import {postComments,getFilmComments} from '../../APIService';
+import Comment from "./Comment";
+const CommentEdit = ({setComPopup, selectedMovie}) => {
     const [text, setText] = useState(" ");
     const [usuario, setUsuario] = useState("livio");
     const [email, setEmail] = useState("liv@liv.com");
-
+    const [comentarios, setComentarios] = useState([{}]);
+    const [loaded, setLoaded] = useState(false);
+    
+    useEffect(()=>{
+      if (!loaded) {
+        getFilmComments(selectedMovie.id,comentarios,setComentarios,loaded,setLoaded);
+      }},[selectedMovie.id,comentarios,setComentarios, setLoaded,loaded])
     const handleExpand = (e) => {
         e.target.style.height = "inherit";
         e.target.style.height = `${e.target.scrollHeight}px`;
@@ -19,7 +23,7 @@ const CommentEdit = ({setComPopup, title}) => {
     };
     const handleOnClick = () => {
         //Llamada API
-        postComments(title, usuario, email, text)
+        postComments(selectedMovie.title,selectedMovie.id, usuario, email, text)
         setComPopup(false)
       };
     const onSubmitHandler = (event) => {
@@ -28,6 +32,7 @@ const CommentEdit = ({setComPopup, title}) => {
     };
     return (
     <div>
+     
       <textarea
         type="text"
         name="text"
@@ -41,6 +46,13 @@ const CommentEdit = ({setComPopup, title}) => {
      <button onClick={handleOnClick}>
         Send
      </button>
+
+     <ul>
+       {loaded ? comentarios.map((comment, index) => (
+         <Comment key= {index} comment= {comment}/>
+       )):null}
+
+     </ul>
     </div>
         
          
