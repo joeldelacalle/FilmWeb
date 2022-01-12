@@ -16,7 +16,6 @@ const CommentEdit = ({setComPopup, selectedMovie}) => {
         e.target.style.height = "inherit";
         e.target.style.height = `${e.target.scrollHeight}px`;
     };
-
     const handleOnChangeText = (e) => {
         setText(e.target.value);
         handleExpand(e);
@@ -26,10 +25,6 @@ const CommentEdit = ({setComPopup, selectedMovie}) => {
         postComments(selectedMovie.title,selectedMovie.id, usuario, email, text)
         setComPopup(false)
       };
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
-        console.log("===");
-    };
     return (
     <div>
      

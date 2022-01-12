@@ -3,6 +3,9 @@ import Movie from './components/Movie';
 import Popup from './components/Popup/Popup';
 import CommentPopup from './components/Popup/CommentPopup';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { LoginButton } from './components/Users/Login';
+import { LogoutButton } from './components/Users/Logout';
+import { Profile } from './components/Users/Profile';
 
 const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9bac13049c867a8efce25b6de5bb8949&page=1";
 
@@ -58,6 +61,9 @@ function App() {
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       <header>
         <h1>MOVIEGOER</h1>
+        <LoginButton />
+        <Profile />
+        <LogoutButton />
         <form onSubmit={handleOnSubmit}>
           <input
             className="search"
