@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { LoginButton } from './components/Users/Login';
 import { LogoutButton } from './components/Users/Logout';
 import { Profile } from './components/Users/Profile';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9bac13049c867a8efce25b6de5bb8949&page=1";
 
@@ -18,6 +19,10 @@ function App() {
   const [buttomPopup, setButtomPopup] = useState(false);
   const [comPopup, setComPopup] = useState(false);
   const [comentario, setComentario] = useState([]);
+  const [nomUsu, setNomUsu]= useState('');
+  const [emailUsu, setEmailUsu]= useState('');
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  
   useEffect(()=>{
     fetch('http://localhost:5000/comentarios',{
       'methods':'POST',
@@ -62,7 +67,7 @@ function App() {
       <header>
         <h1>MOVIEGOER</h1>
         <LoginButton />
-        <Profile />
+        <Profile user={user} isAuthenticated={isAuthenticated} isLoading={isLoading} />
         <LogoutButton />
         <form onSubmit={handleOnSubmit}>
           <input
@@ -76,7 +81,7 @@ function App() {
         </form>  
       </header>
       <Popup selectedMovie={selectedMovie} buttomPopup={buttomPopup} setButtomPopup={setButtomPopup}/>
-      <CommentPopup selectedMovie={selectedMovie} comPopup={comPopup} setComPopup={setComPopup}/>
+      <CommentPopup selectedMovie={selectedMovie} comPopup={comPopup} setComPopup={setComPopup} user={user}/>
       <div className="movie-container">
         {movies.length > 0 && movies.map((movie) => (
           <Movie key={movie.id} {...movie} setSelectedMovie={setSelectedMovie} 

@@ -1,9 +1,10 @@
+import { User } from "@auth0/auth0-react";
 import React from "react";
 
 const Comment = ({comment}) => {
     return (
         <li>
-            {comment.comentario}
+            {comment.nomUsuario}: {comment.comentario}
         </li>
     )
 };

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Button from "react-bootstrap/esm/Button";
 import {postComments,getFilmComments} from '../../APIService';
 import Comment from "./Comment";
-const CommentEdit = ({setComPopup, selectedMovie}) => {
+const CommentEdit = ({setComPopup, selectedMovie, user}) => {
     const [text, setText] = useState(" ");
-    const [usuario, setUsuario] = useState("livio");
-    const [email, setEmail] = useState("liv@liv.com");
+    const [usuario, setUsuario] = useState(user.name);
+    const [email, setEmail] = useState(user.email);
     const [comentarios, setComentarios] = useState([{}]);
     const [loaded, setLoaded] = useState(false);
     
@@ -27,7 +28,6 @@ const CommentEdit = ({setComPopup, selectedMovie}) => {
       };
     return (
     <div>
-     
       <textarea
         type="text"
         name="text"
@@ -38,9 +38,9 @@ const CommentEdit = ({setComPopup, selectedMovie}) => {
         placeholder="Add Text..."
       />
       
-     <button onClick={handleOnClick}>
-        Send
-     </button>
+     <Button onClick={handleOnClick}>
+        SEND
+     </Button>
 
      <ul>
        {loaded ? comentarios.map((comment, index) => (

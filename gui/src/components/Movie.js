@@ -50,7 +50,7 @@ const Movie = ({
             </div>
 
             <div className="comments-button">
-            <Button variant="success" onClick={handleButtonOnClick}>COMENTARIOS</Button> 
+            <Button variant="success" onClick={handleButtonOnClick}>COMMENTS</Button> 
             </div>
         </div>      
     );}

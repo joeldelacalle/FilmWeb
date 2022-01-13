@@ -10,13 +10,35 @@
     align-items: center;
     z-index: 9;   
 }
+.comPopup-inner > Button {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: right;
+}
+.comPopup-inner > div >  textarea {
+    display: flex;
+}
+.comPopup-inner > div >  li {
+    display: flex;
+    position: fixed;
+}
 .comPopup-inner {
+    display: grid;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     height: fit-content;
-    min-height: 300px;
+    min-height: 400px;
     position: relative;
     background-color: #700025;
     color: seashell;
     overflow: hidden;
+}
+
+.comPopup-inner p {
+    justify-content: start;
+}
+
+.comPopup-inner textarea {
+    height: 40%;
+    justify-content: start;
 }

@@ -4,8 +4,9 @@ import Comment from '../List/Comment';
 import CommentEdit from '../List/CommentEdit';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+import Button from 'react-bootstrap/esm/Button';
 
-function CommentPopup({selectedMovie, comPopup, setComPopup}) {
+function CommentPopup({selectedMovie, comPopup, setComPopup,user}) {
     const [content, setContent] = useState("");
     const onSubmitHandler = (event) => {
         event.preventDefault();
@@ -17,8 +18,9 @@ function CommentPopup({selectedMovie, comPopup, setComPopup}) {
     if(comPopup){
         return (<div className="comPopup"> 
                     <div className="comPopup-inner">
-                        <p onClick={handleButtonOnClick}>TITULO: {selectedMovie.title}</p>
-                        <CommentEdit setComPopup={setComPopup} selectedMovie={selectedMovie}  />
+                        
+                        <Button variant="danger" onClick={handleButtonOnClick}>CLOSE</Button>
+                        <CommentEdit setComPopup={setComPopup} selectedMovie={selectedMovie} user={user}  />
                         
                     </div> 
                 </div>);

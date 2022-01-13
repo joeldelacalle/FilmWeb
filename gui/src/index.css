@@ -97,10 +97,18 @@ code {
 }
 
 .movie:hover .movie-over {
+  align-items: center;
   transform: translateX(0%);
-  transform: translateY(-20%);
+  transform: translateY(-70%);
 }
 
+.movie-over h2{
+  font-size: 160%;
+}
+
+.movie-over p{
+  font-size: 90%;
+}
 
 
 .movie img {
