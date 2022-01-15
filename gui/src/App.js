@@ -19,8 +19,6 @@ function App() {
   const [buttomPopup, setButtomPopup] = useState(false);
   const [comPopup, setComPopup] = useState(false);
   const [comentario, setComentario] = useState([]);
-  const [nomUsu, setNomUsu]= useState('');
-  const [emailUsu, setEmailUsu]= useState('');
   const { user, isAuthenticated, isLoading } = useAuth0();
   
   useEffect(()=>{
@@ -60,7 +58,7 @@ function App() {
   const handleOnChange = (e) => {
     setSearchTerm(e.target.value);
   }
-
+  
   return ( 
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
@@ -85,7 +83,7 @@ function App() {
       <div className="movie-container">
         {movies.length > 0 && movies.map((movie) => (
           <Movie key={movie.id} {...movie} setSelectedMovie={setSelectedMovie} 
-          movie = {movie} setButtomPopup={setButtomPopup} setComPopup={setComPopup}/>)
+          movie = {movie} setButtomPopup={setButtomPopup} setComPopup={setComPopup} user = {user}/>)
         )}
       </div>
     </>

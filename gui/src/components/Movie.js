@@ -18,7 +18,7 @@ const setVoteDisplay = (vote) =>{
 }
 
 const Movie = ({
-    title, poster_path, overview, vote_average, movie, setSelectedMovie, setButtomPopup, setComPopup
+    title, poster_path, overview, vote_average, movie, setSelectedMovie, setButtomPopup, setComPopup, user
 }) => {
     
     const handleOnClick = () => {
@@ -29,10 +29,14 @@ const Movie = ({
      };
 
      const handleButtonOnClick = () => {
-        setSelectedMovie(movie);
-        setComPopup(true);
+        if (user == null) {
+            alert("You must be logged to make your comment");
+        }else{
+            setSelectedMovie(movie);
+            setComPopup(true);
+        }
      };
-
+     
     return (   
         <div className="movie">
             <img onClick={handleOnClick}

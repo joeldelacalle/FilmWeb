@@ -12,11 +12,13 @@
 }
 .comPopup-inner > Button {
     display: inline-block;
+    max-height: 50px;
     background-color: rgba(0, 0, 0, 0.4);
     justify-content: right;
 }
 .comPopup-inner > div >  textarea {
     display: flex;
+    
 }
 .comPopup-inner > div >  li {
     display: flex;
